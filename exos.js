@@ -62,6 +62,10 @@ function triageSigne(tableau) {
             negatifs.push(nb);
         }
     });
-    return `Les nombres négatifs sont ${negatifs} et les nombres positifs sont ${positifs}`;
+    return `Les nombres négatifs sont ${negatifs} et les nombres positifs sont ${positifs}.`;
 }
 console.log(triageSigne(nbNegEtPos));
+
+//EXERCICE 8
+const liste = [3, 5, 2, 8, 1];
+console.log(`Le max de la liste est ${Math.max(...liste)}.`);
