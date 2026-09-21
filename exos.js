@@ -69,3 +69,8 @@ console.log(triageSigne(nbNegEtPos));
 //EXERCICE 8
 const liste = [3, 5, 2, 8, 1];
 console.log(`Le max de la liste est ${Math.max(...liste)}.`);
+
+//EXERCICE 9
+let motARetourner = "voiture";
+const reverseStr = (str) => [...str].reverse().join("");
+console.log(reverseStr(motARetourner));
