@@ -33,7 +33,7 @@ for(let j = 0; j < mot.length; j++){
 console.log(nbVoyelle);
 
 //EXERCICE 6
-const phrase = "Je travail chez Carglass";
+let phrase = "Je travail chez Carglass";
 
 function comptLetters(phrase) {
     phrase = phrase.toLowerCase();
@@ -49,3 +49,19 @@ function comptLetters(phrase) {
 }
 
 console.log(comptLetters(phrase));
+
+//EXERCICE 7
+const nbNegEtPos = [3, -6, 7, -13, 3, 23, -1];
+function triageSigne(tableau) {
+    let positifs =[];
+    let negatifs =[];
+    tableau.forEach((nb) =>{
+        if(nb >= 0){
+            positifs.push(nb);
+        } else {
+            negatifs.push(nb);
+        }
+    });
+    return `Les nombres négatifs sont ${negatifs} et les nombres positifs sont ${positifs}`;
+}
+console.log(triageSigne(nbNegEtPos));
