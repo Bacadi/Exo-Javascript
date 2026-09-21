@@ -31,3 +31,21 @@ for(let j = 0; j < mot.length; j++){
     }
 }
 console.log(nbVoyelle);
+
+//EXERCICE 6
+const phrase = "Je travail chez Carglass";
+
+function comptLetters(phrase) {
+    phrase = phrase.toLowerCase();
+    let lettres = {};
+    for (let letter of phrase) {
+        if (lettres[letter]) {
+            lettres[letter]++;
+        } else {
+            lettres[letter] = 1;
+        }
+    }
+    return lettres;
+}
+
+console.log(comptLetters(phrase));
