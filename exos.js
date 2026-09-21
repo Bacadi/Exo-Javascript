@@ -21,3 +21,13 @@ for(let i = 0; i <= 20; i++){
         console.log(i)
     }
 }
+
+//EXERCICE 5
+const mot = "voiture";
+let nbVoyelle = 0;
+for(let j = 0; j < mot.length; j++){
+    if("aeiou".includes(mot[j])){
+        nbVoyelle++
+    }
+}
+console.log(nbVoyelle);
