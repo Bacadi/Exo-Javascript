@@ -27,6 +27,7 @@ main {
     padding: 20px;
     text-align: justify;
     overflow-y: scroll;
+    max-height: 100vh;
 }
 
 .exercice {
