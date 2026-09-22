@@ -51,3 +51,14 @@ main {
 .exercice button:active {
     background-color: black;
 }
+
+#display {
+    border: 2px solid white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+#numExo {
+    text-decoration: underline;
+    text-align: left;
+}

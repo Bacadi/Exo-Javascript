@@ -49,7 +49,7 @@ const exercices = [
             phrase = phrase.toLowerCase();
             let lettres = {};
             for (let letter of phrase) {
-                if(letter === ' ') continue
+                if (letter === ' ') continue
                 if (lettres[letter]) {
                     lettres[letter]++;
                 } else {
@@ -93,7 +93,109 @@ const exercices = [
         let motARetourner = "voiture";
         const reverseStr = (str) => [...str].reverse().join("");
         return `Le mot "${motARetourner}" retourné : ${reverseStr(motARetourner)}`;
+    },
+
+    /////////PARTIE 2
+
+    //EXERCICE 10 
+    function funcexo10() {
+        let loopIte = 5;
+        let output = "";
+
+        for (let i = 1; i <= 5; i++) {
+            output += `${"*".repeat(i)}<br>`;
+        }
+        return `Pyramide de ${loopIte} étages:<br>${output}`;
+    },
+    //EXERCICE 11
+    function funcexo11() {
+        const heros = ["wolverine", "spiderman", "ironman", "superman", "antman"];
+        let aff = "";
+        heros.forEach((el) => {
+            aff += `<br>Je suis fan de ${el}!`
+        });
+        return `Phrases pour les héros: ${aff}`
+    },
+    //EXERCICE 12
+    function funcexo12() {
+        let rebour = "";
+        let compt = 10;
+        const tot = compt;
+        while (compt > 0) {
+            rebour += `${compt}<br>`
+            compt--
+        }
+        return `Décollage dans ${tot} secondes:<br>${rebour}Décollage !`;
+    },
+    //EXERCICE 13
+    function funcexo13() {
+        let aff = "";
+        const amis = ["Philippe", "Bernard", "Jean-Marie", "Christophe", "Patrick"];
+        amis.forEach((ami, index) => {
+            while (index >= 0) {
+                aff += `${ami.repeat(index + 1)}`;
+                index = - 1;
+            }
+            aff += `<br>`;
+        })
+        return `Noms des amis répétés selon leur position dans le tableau:<br>${aff}`
+    },
+    //EXERCICE 14.1
+    function funcexo14_1() {
+        let rep = "";
+        while (rep != 3 && rep != 2 && rep != 3) {
+            rep = prompt("Donner un chiffre entre 1 et 3 pour pouvoir continuer", 0);
+        }
+        return `Vous avez choisis le chiffre: "${rep}" compris entre 1 et 3 inclus.`
+    },
+    //EXERCICE 14.2
+    function funcexo14_1() {
+        let rep = "";
+        let nombre = NaN;
+        let message = "Donner un chiffre entre 10 et 20 pour pouvoir continuer";
+
+        while (isNaN(nombre) || nombre < 10 || nombre > 20) {
+            rep = prompt(message, 0);
+            nombre = Number(rep);
+
+            if (nombre < 10) {
+                message = "Plus Grand !";
+            } else if (nombre > 20) {
+                message = "Plus Petit !";
+            } else if (isNaN(nombre) || rep === "" || rep === null) {
+                message = "Merci d'entrer un nombre valide entre 10 et 20";
+            }
+        }
+        return `Vous avez choisis le chiffre: "${rep}" compris entre 10 et 20 inclus.`
+    },
+    //EXERCICE 14.3
+    function funcexo14_3() {
+        let aff ="";
+        let depart = parseInt(prompt("Entrez un nombre de départ :"));
+        for (let i = 1; i <= 10; i++) {
+            aff += `${depart + i}<br>`;
+        }
+        return `Les 10 nombres qui suivent ${depart} sont:<br>${aff}`
+    },
+    ///EXERCICE 14.4
+    function funcexo14_4(){
+        let table ="";
+        let dep = parseInt(prompt("Entrez un nombre dont vous voulez la table de multiplication."));
+        for (let i = 1; i <= 10; i++) {
+            table += `${dep} x ${i} = ${dep * i}<br>`;
+        }
+        return `La table de ${dep}:<br>${table}`
+    },
+    //EXERCICE 14.5
+    function funcexo14_5(){
+        let fact ="";
+        let dep = parseInt(prompt("Entrez un nombre dont vous voulez la factorielle."));
+        for (let i = 1; i <= dep; i++) {
+            fact += ``;
+        }
+        return `La table de ${dep}:<br>${table}`
     }
+    
 ]
 
 
@@ -116,7 +218,7 @@ divs.forEach((div, divIndex) => {
 
             numex.textContent = `${btn.textContent}`;
             let func = exercices[divIndex];
-             
+
             affichage.innerHTML = func();
         });
     });
