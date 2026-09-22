@@ -86,7 +86,7 @@ const exercices = [
     //EXERCICE 8
     function funcexo8() {
         const liste = [3, 5, 2, 8, 1];
-        return `Le max de la liste est ${Math.max(...liste)}.`;
+        return `Le max de la liste: ${liste} est ${Math.max(...liste)}.`;
     },
     //EXERCICE 9
     function funcexo9() {
@@ -133,7 +133,7 @@ const exercices = [
         const amis = ["Philippe", "Bernard", "Jean-Marie", "Christophe", "Patrick"];
         amis.forEach((ami, index) => {
             while (index >= 0) {
-                aff += `${ami.repeat(index + 1)}`;
+                aff += `${ami.repeat(index + 1)} `;
                 index = - 1;
             }
             aff += `<br>`;
@@ -170,7 +170,7 @@ const exercices = [
     },
     //EXERCICE 14.3
     function funcexo14_3() {
-        let aff ="";
+        let aff = "";
         let depart = parseInt(prompt("Entrez un nombre de départ :"));
         for (let i = 1; i <= 10; i++) {
             aff += `${depart + i}<br>`;
@@ -178,24 +178,140 @@ const exercices = [
         return `Les 10 nombres qui suivent ${depart} sont:<br>${aff}`
     },
     ///EXERCICE 14.4
-    function funcexo14_4(){
-        let table ="";
-        let dep = parseInt(prompt("Entrez un nombre dont vous voulez la table de multiplication."));
+    function funcexo14_4() {
+        let table = "";
+        let dep = parseInt(prompt("Entrez un nombre dont vous voulez la table de multiplication.", 7));
         for (let i = 1; i <= 10; i++) {
             table += `${dep} x ${i} = ${dep * i}<br>`;
         }
         return `La table de ${dep}:<br>${table}`
     },
     //EXERCICE 14.5
-    function funcexo14_5(){
-        let fact ="";
-        let dep = parseInt(prompt("Entrez un nombre dont vous voulez la factorielle."));
+    function funcexo14_5() {
+        let somme = 0;
+        let dep = parseInt(promp("Entrez un nombre pour déterminer la fin de la somme", 5))
         for (let i = 1; i <= dep; i++) {
-            fact += ``;
+            somme += i;
         }
-        return `La table de ${dep}:<br>${table}`
+        return `La somme des entier de 1 à ${dep} vaut: ${somme}.`;
+    },
+    //EXERCICE 14.6
+    function funcexo14_6() {
+        let fact = 1;
+        let phrase = "";
+        let dep = prompt("Entrez un nombre dont vous voulez la factorielle.", 4);
+        for (let i = 1; i <= dep; i++) {
+            fact *= i;
+            if (i != dep) {
+                phrase += `${i} x `
+            } else {
+                phrase += `${i}`;
+            }
+        }
+        return `La factorielle de ${dep}, notée ${dep}!, vaut :<br>${phrase} = ${fact}.`
+    },
+    //EXERCICE 14.7
+    function funcexo14_7() {
+        let donnees = [];
+        for (let i = 1; i <= 20; i++) {
+            donnees.push(Number(prompt(`Entrez le nombre numéro ${i}`, i)));
+        }
+        let maxi = Math.max(...donnees);
+        let position = donnees.indexOf(maxi) + 1;
+        return `Le plus grand des nombres donnés est : ${maxi}, c'était le nombre numéro ${position}`;
+    },
+    //EXERCICE 14.8
+    function funcexo14_8() {
+        let donnees = [];
+        let nombre;
+        let i = 1;
+
+        do {
+            nombre = Number(prompt(`Entrez le nombre numéro ${i} (0 pour arrêter)`));
+            if (nombre !== 0) {
+                donnees.push(nombre);
+                i++;
+            }
+        } while (nombre !== 0);
+
+        if (donnees.length === 0) {
+            return "Aucun nombre n'a été saisi.";
+        }
+
+        let maxi = Math.max(...donnees);
+        let position = donnees.indexOf(maxi) + 1;
+
+        return `Le plus grand des nombres donnés est : ${maxi}, c'était le nombre numéro ${position}`;
+    },
+    //EXERCICE 14.9
+    function funcexo14_9() {
+        let prix = [];
+        let prixSaisi;
+        let i = 1;
+        do {
+            prixSaisi = Number(prompt(`Entrez le prix numéro ${i} (0 pour arrêter)`));
+            if (prixSaisi !== 0) {
+                prix.push(prixSaisi);
+                i++;
+            }
+        } while (prixSaisi !== 0);
+
+        // Calcul de la somme totale
+        let somme = 0;
+        for (let p of prix) {
+            somme += p;
+        }
+        let resultat = `Le client doit payer : ${somme} euros<br>`;
+
+        // Lecture de la somme payée
+        let paye = Number(prompt(`Le client doit payer ${somme} euros. Combien paye-t-il ?`, somme));
+
+        // Calcul de la monnaie à rendre
+        let monnaie = paye - somme;
+        if (monnaie < 0) {
+            resultat += `Il manque ${-monnaie} euros, le paiement est insuffisant.`;
+            return resultat;
+        }
+        resultat += `Le client a payé ${paye}, monnaie à rendre : ${monnaie} euros, soit:<br>`;
+
+        // Simulation de la remise de monnaie
+        let nbBillets10 = Math.floor(monnaie / 10);
+        monnaie = monnaie % 10;
+        let nbBillets5 = Math.floor(monnaie / 5);
+        monnaie = monnaie % 5;
+        let nbPieces1 = monnaie;
+        for (let j = 0; j < nbBillets10; j++) {
+            resultat += "10 Euros<br>";
+        }
+        for (let j = 0; j < nbBillets5; j++) {
+            resultat += "5 Euros<br>";
+        }
+        for (let j = 0; j < nbPieces1; j++) {
+            resultat += "1 Euro<br>";
+        }
+        return resultat;
+    },
+    //EXERCICE 15
+    function funcexo15() {
+        let n = Number(prompt("Nombre de chevaux partants ?"));
+        let p = Number(prompt("Nombre de chevaux joués ?"));
+        // Calcul de X = n! / (n-p)!
+        // Astuce : n! / (n-p)! = n × (n-1) × (n-2) × ... × (n-p+1)
+        let X = 1;
+        for (let i = 0; i < p; i++) {
+            X *= (n - i);
+        }
+        // Calcul de Y = X / p!
+        let factP = 1;
+        for (let i = 1; i <= p; i++) {
+            factP *= i;
+        }
+        let Y = X / factP;
+        let resultat = `Dans l'ordre : une chance sur ${X} de gagner.<br>`;
+        resultat += `Dans le désordre : une chance sur ${Y} de gagner.`;
+        return resultat;
     }
-    
+
 ]
 
 
